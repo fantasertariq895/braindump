@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react'
+import Layout from '../components/Layout'
 import NoteForm from '../components/NoteForm'
 import NoteCard, { Note } from '../components/NoteCard'
 import TagSelector, { TagType } from '../components/TagSelector'
@@ -50,7 +51,7 @@ export default function Home() {
   const displayedNotes = filter === 'all' ? notes : notes.filter((n) => n.tag === filter)
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-xl flex-col gap-8 p-6">
+    <Layout>
       <h1 className="text-3xl font-bold">BrainDump</h1>
       <NoteForm onAdd={addNote} />
 
@@ -82,6 +83,6 @@ export default function Home() {
           displayedNotes.map((note) => <NoteCard key={note.id} note={note} />)
         )}
       </div>
-    </main>
+    </Layout>
   )
 }
